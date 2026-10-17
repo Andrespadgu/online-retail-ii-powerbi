@@ -1,0 +1,12 @@
+# Datos crudos y archivos pesados: descargar de UCI o regenerar con los scripts
+1_datos_originales/
+2_datos_limpios/csv_limpio/
+2_datos_limpios/lineas_clasificadas/
+*.xlsx
+*.zip
+
+# Sistema / Python
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc

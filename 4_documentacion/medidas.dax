@@ -1,0 +1,49 @@
+// Medidas base del modelo de ventas retail.
+// Definiciones: ver `metricas:` en reglas_retail.yaml (paso de reglas de negocio). No cambiar una sin la otra.
+//
+// Cómo cargarlas: Power BI Desktop > Vista de consultas DAX > pegar este archivo >
+// clic en "Actualizar modelo con cambios" (aparece sobre DEFINE). Luego ejecutar:
+// la consulta EVALUATE final devuelve los totales para compararlos con valores_esperados.csv.
+// Formatos sugeridos: importes = moneda/2 decimales, Facturas y Clientes = entero, % = porcentaje.
+
+DEFINE
+    MEASURE fact_ventas[Ventas Brutas] =
+        CALCULATE ( SUM ( fact_ventas[importe] ), KEEPFILTERS ( fact_ventas[tipo_linea] = "venta" ) )
+
+    // En positivo: el signo negativo está en la tabla.
+    MEASURE fact_ventas[Devoluciones] =
+        - CALCULATE ( SUM ( fact_ventas[importe] ), KEEPFILTERS ( fact_ventas[tipo_linea] = "devolucion" ) )
+
+    MEASURE fact_ventas[Ventas Netas] = [Ventas Brutas] - [Devoluciones]
+
+    // Envío, comisiones, descuentos... con su signo. No incluye ajustes contables ni de inventario.
+    MEASURE fact_ventas[Cargos No Producto] =
+        CALCULATE ( SUM ( fact_ventas[importe] ), KEEPFILTERS ( fact_ventas[tipo_linea] = "cargo_no_producto" ) )
+
+    MEASURE fact_ventas[Facturas] =
+        CALCULATE ( DISTINCTCOUNT ( fact_ventas[num_factura] ), KEEPFILTERS ( fact_ventas[tipo_linea] = "venta" ) )
+
+    // Valor medio de un pedido. Usa brutas: una devolución casi siempre pertenece a otro pedido.
+    MEASURE fact_ventas[Ticket Promedio] = DIVIDE ( [Ventas Brutas], [Facturas] )
+
+    // Excluye la fila -1 (ventas sin cliente identificado).
+    MEASURE fact_ventas[Clientes Únicos] =
+        CALCULATE (
+            DISTINCTCOUNT ( fact_ventas[cliente_key] ),
+            KEEPFILTERS ( fact_ventas[tipo_linea] = "venta" ),
+            KEEPFILTERS ( fact_ventas[cliente_identificado] = TRUE () )
+        )
+
+    MEASURE fact_ventas[% Devoluciones] = DIVIDE ( [Devoluciones], [Ventas Brutas] )
+
+EVALUATE
+ROW (
+    "Ventas Brutas", [Ventas Brutas],
+    "Devoluciones", [Devoluciones],
+    "Ventas Netas", [Ventas Netas],
+    "Cargos No Producto", [Cargos No Producto],
+    "Facturas", [Facturas],
+    "Ticket Promedio", [Ticket Promedio],
+    "Clientes Únicos", [Clientes Únicos],
+    "% Devoluciones", [% Devoluciones]
+)

@@ -1,0 +1,71 @@
+# Reglas de negocio para transacciones retail
+# Cambiar CUALQUIER regla = subir la versión y anotar el cambio en `historial`.
+# Así un número de un tablero siempre se puede rastrear a la versión de reglas que lo produjo.
+
+version: "1.1"
+historial:
+  - version: "1.1"
+    fecha: "2026-10-15"
+    cambio: >
+      patron_codigo_producto ampliado para cubrir SP1002 (SP + 4 dígitos, producto confirmado por usuario).
+      C3 y GIFT revisados: salidas de inventario a precio 0, se mantienen como ajuste_inventario via R5.
+  - version: "1.0"
+    fecha: "2026-10-15"
+    cambio: "Versión inicial (dataset tipo Online Retail / Online Retail II)."
+
+# Nombre canónico -> nombre de la columna en tu archivo (después de limpiarlo).
+# Si una columna no existe en tu archivo, deja el valor en null.
+columnas:
+  factura: invoice
+  codigo: stock_code
+  descripcion: description
+  cantidad: quantity
+  fecha: invoice_date
+  precio: price
+  cliente: customer_id
+  pais: country
+  estado: null          # columna de estado del pedido, si existe (p. ej. "cancelado")
+
+# --- Cancelaciones y devoluciones -----------------------------------------
+# cancelado:   el pedido se anuló ANTES de facturar/entregar -> no es venta ni devolución.
+#              Solo se puede detectar si hay columna `estado`.
+# devolucion:  nota crédito DESPUÉS de facturar (factura con prefijo, o cantidad < 0 con precio > 0
+#              en un código de producto). En Online Retail las facturas "C" mezclan anulaciones
+#              posteriores a la factura y devoluciones reales; no se pueden separar, así que
+#              ambas cuentan como devolución.
+prefijo_devolucion: "C"
+prefijo_ajuste_contable: "A"          # p. ej. "A563185 Adjust bad debt"
+estados_cancelado: ["cancelado", "cancelled", "canceled", "anulado"]
+
+# --- Cargos y conceptos que no son producto ---------------------------------
+# Se comparan sin distinguir mayúsculas y tras quitar espacios de los extremos.
+codigos_no_producto:
+  envio: ["POST", "DOT", "C2"]
+  descuento: ["D"]
+  comision: ["AMAZONFEE", "BANK CHARGES"]
+  ajuste_manual: ["M", "ADJUST", "ADJUST2"]
+  ajuste_contable: ["B"]
+  muestra: ["S"]
+  donacion: ["CRUK"]
+  otro: ["PADS", "TEST001", "TEST002"]
+patrones_no_producto:                  # expresiones regulares sobre el código
+  tarjeta_regalo: "^gift_"
+  otro: "^DCGS"
+
+# Forma de un código de producto normal. Lo que no encaja y no está en las listas
+# de arriba queda como `codigo_no_reconocido` y hay que decidir qué es (ver la secciÃ³n de pendientes).
+patron_codigo_producto: "^([0-9]{5}[A-Za-z]{0,2}|SP[0-9]{4})$"
+
+# --- Ventas sin cliente identificado ----------------------------------------
+# Cuentan en ventas, devoluciones y facturas; NO cuentan en clientes únicos ni en métricas por cliente.
+cliente_sin_identificar: "SIN_CLIENTE"
+
+# --- Definición de métricas (el modelo las implementa en DAX tal cual) --
+metricas:
+  ventas_brutas: "Suma de cantidad x precio de las líneas tipo 'venta'."
+  devoluciones: "Suma del valor absoluto de las líneas tipo 'devolucion' (solo productos). Se reporta en positivo."
+  ventas_netas: "ventas_brutas - devoluciones. No incluye cargos, descuentos ni ajustes."
+  cargos_no_producto: "Suma de importe de las líneas tipo 'cargo_no_producto' (envío, comisiones, descuentos, tarjetas regalo...), con su signo. Se reporta aparte. No incluye ajustes contables."
+  facturas: "Número de facturas distintas con al menos una línea tipo 'venta'."
+  ticket_promedio: "ventas_brutas / facturas. Valor medio de un pedido; las devoluciones no lo reducen porque suelen pertenecer a otros pedidos."
+  clientes_unicos: "Clientes distintos con al menos una línea tipo 'venta', excluyendo SIN_CLIENTE."

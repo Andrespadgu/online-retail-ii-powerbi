@@ -1,0 +1,18 @@
+[
+  {
+    "desde": "fact_ventas[fecha_key]",
+    "hacia": "dim_fecha[fecha_key]"
+  },
+  {
+    "desde": "fact_ventas[producto_key]",
+    "hacia": "dim_producto[producto_key]"
+  },
+  {
+    "desde": "fact_ventas[cliente_key]",
+    "hacia": "dim_cliente[cliente_key]"
+  },
+  {
+    "desde": "fact_ventas[pais_key]",
+    "hacia": "dim_pais[pais_key]"
+  }
+]

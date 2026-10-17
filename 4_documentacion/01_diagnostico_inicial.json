@@ -1,0 +1,557 @@
+{
+  "meta": {
+    "archivo": "trabajo\\00_crudo\\online_retail_II_crudo.csv",
+    "bytes": 117508785,
+    "codificacion": "utf-8",
+    "motivo_codificacion": "decodifica limpio como UTF-8",
+    "separador": ",",
+    "motivo_separador": "csv.Sniffer",
+    "columnas_encabezado": 10,
+    "anchos_de_fila": {
+      "10": 1067371
+    },
+    "filas_ancho_incorrecto_ejemplos": [],
+    "saltos_de_linea": "CRLF"
+  },
+  "filas": 1067371,
+  "columnas": 10,
+  "encabezados": [],
+  "filas_encabezado_repetido": [],
+  "filas_total_o_resumen": [],
+  "filas_totalmente_vacias": 0,
+  "duplicados_exactos": 0,
+  "duplicados_tras_normalizar_texto": 0,
+  "columnas_detalle": {
+    "hoja_origen": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 2,
+      "ejemplos": [
+        "Year 2009-2010",
+        "Year 2010-2011"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "texto/categoría",
+      "frecuencias": {
+        "Year 2010-2011": 541910,
+        "Year 2009-2010": 525461
+      }
+    },
+    "fila_excel": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 541910,
+      "ejemplos": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "numérico",
+      "formato_numero": {
+        "con_moneda": 0,
+        "con_porcentaje": 0,
+        "decimal_coma": 0,
+        "decimal_punto": 0,
+        "formato_asumido": "1,234.56 (punto decimal)"
+      },
+      "estadisticas": {
+        "count": 1067371.0,
+        "mean": 266907.6229,
+        "std": 154171.5188,
+        "min": 2.0,
+        "25%": 133423.0,
+        "50%": 266844.0,
+        "75%": 400265.5,
+        "max": 541911.0
+      },
+      "negativos": 0,
+      "ceros": 0,
+      "posibles_centinelas": {
+        "999": 2,
+        "9999": 2,
+        "99999": 2
+      },
+      "outliers": {
+        "regla": "fuera de [Q1-3·IQR, Q3+3·IQR]",
+        "limites": [
+          -667104.5,
+          1200793.0
+        ],
+        "n_iqr3": 0,
+        "n_z_robusto>3.5": 0,
+        "valores_mas_altos": [
+          541911.0,
+          541910.0,
+          541909.0,
+          541908.0,
+          541907.0
+        ],
+        "valores_mas_bajos": [
+          2.0,
+          2.0,
+          3.0,
+          3.0,
+          4.0
+        ],
+        "tope_repetido": {},
+        "piso_repetido": {},
+        "sesgo": 0.0
+      }
+    },
+    "Invoice": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 53628,
+      "ejemplos": [
+        "489434",
+        "489435",
+        "489436",
+        "489437",
+        "489438"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "numérico",
+      "formato_numero": {
+        "con_moneda": 0,
+        "con_porcentaje": 0,
+        "decimal_coma": 0,
+        "decimal_punto": 0,
+        "formato_asumido": "1,234.56 (punto decimal)"
+      },
+      "no_convertibles": {
+        "C570867": 101,
+        "C560540": 57,
+        "C524235": 45,
+        "C548460": 45,
+        "C536164": 44
+      },
+      "estadisticas": {
+        "count": 1047871.0,
+        "mean": 537608.1499,
+        "std": 26662.4504,
+        "min": 489434.0,
+        "25%": 515305.0,
+        "50%": 537638.0,
+        "75%": 561006.0,
+        "max": 581587.0
+      },
+      "negativos": 0,
+      "ceros": 0,
+      "outliers": {
+        "regla": "fuera de [Q1-3·IQR, Q3+3·IQR]",
+        "limites": [
+          378202.0,
+          698109.0
+        ],
+        "n_iqr3": 0,
+        "n_z_robusto>3.5": 0,
+        "valores_mas_altos": [
+          581587.0,
+          581587.0,
+          581587.0,
+          581587.0,
+          581587.0
+        ],
+        "valores_mas_bajos": [
+          489434.0,
+          489434.0,
+          489434.0,
+          489434.0,
+          489434.0
+        ],
+        "tope_repetido": {},
+        "piso_repetido": {},
+        "sesgo": -0.08
+      }
+    },
+    "StockCode": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 5304,
+      "ejemplos": [
+        "85048",
+        "79323P",
+        "79323W",
+        "22041",
+        "21232"
+      ],
+      "con_espacios_extremos": 1,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "numérico",
+      "formato_numero": {
+        "con_moneda": 0,
+        "con_porcentaje": 0,
+        "decimal_coma": 0,
+        "decimal_punto": 0,
+        "formato_asumido": "1,234.56 (punto decimal)"
+      },
+      "no_convertibles": {
+        "85123A": 5829,
+        "85099B": 4216,
+        "POST": 2122,
+        "82494L": 2108,
+        "85099C": 1952
+      },
+      "estadisticas": {
+        "count": 932385.0,
+        "mean": 28350.2016,
+        "std": 17968.4797,
+        "min": 10002.0,
+        "25%": 21716.0,
+        "50%": 22367.0,
+        "75%": 22917.0,
+        "max": 90208.0
+      },
+      "negativos": 0,
+      "ceros": 0,
+      "outliers": {
+        "regla": "fuera de [Q1-3·IQR, Q3+3·IQR]",
+        "limites": [
+          18113.0,
+          26520.0
+        ],
+        "n_iqr3": 121412,
+        "n_z_robusto>3.5": 121412,
+        "valores_mas_altos": [
+          90208.0,
+          90208.0,
+          90208.0,
+          90208.0,
+          90208.0
+        ],
+        "valores_mas_bajos": [
+          10002.0,
+          10002.0,
+          10002.0,
+          10002.0,
+          10002.0
+        ],
+        "tope_repetido": {
+          "valor": 90208.0,
+          "veces": 71
+        },
+        "piso_repetido": {
+          "valor": 10002.0,
+          "veces": 400
+        },
+        "sesgo": 2.66
+      }
+    },
+    "Description": {
+      "vacios": 4382,
+      "nulos_disfrazados": {
+        "?": 92,
+        "missing": 27,
+        "??": 7,
+        "MISSING": 2,
+        "Missing": 1
+      },
+      "pct_faltante_total": 0.4,
+      "unicos": 5650,
+      "ejemplos": [
+        "15CM CHRISTMAS GLASS BALL 20 LIGHTS",
+        "PINK CHERRY LIGHTS",
+        "WHITE CHERRY LIGHTS",
+        "RECORD FRAME 7\" SINGLE SIZE",
+        "STRAWBERRY CERAMIC TRINKET BOX"
+      ],
+      "con_espacios_extremos": 213035,
+      "con_espacios_dobles": 48398,
+      "tipo_probable": "texto/categoría",
+      "variantes_misma_categoria": {
+        "n_grupos": 30,
+        "ejemplos": {
+          "amazon": [
+            "AMAZON",
+            "Amazon",
+            "amazon"
+          ],
+          "damaged": [
+            "DAMAGED",
+            "Damaged",
+            "damaged"
+          ],
+          "found": [
+            "FOUND",
+            "Found",
+            "found"
+          ],
+          "adjustment": [
+            "Adjustment",
+            "adjustment"
+          ],
+          "amazon adjustment": [
+            "Amazon Adjustment",
+            "amazon adjustment"
+          ]
+        }
+      },
+      "parece_texto_libre": true
+    },
+    "Quantity": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 1057,
+      "ejemplos": [
+        "12",
+        "48",
+        "24",
+        "10",
+        "18"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "numérico",
+      "formato_numero": {
+        "con_moneda": 0,
+        "con_porcentaje": 0,
+        "decimal_coma": 0,
+        "decimal_punto": 0,
+        "formato_asumido": "1,234.56 (punto decimal)"
+      },
+      "estadisticas": {
+        "count": 1067371.0,
+        "mean": 9.9389,
+        "std": 172.7058,
+        "min": -80995.0,
+        "25%": 1.0,
+        "50%": 3.0,
+        "75%": 10.0,
+        "max": 80995.0
+      },
+      "negativos": 22950,
+      "ceros": 0,
+      "posibles_centinelas": {
+        "-1": 8897,
+        "-9": 180,
+        "-99": 6,
+        "-999": 1
+      },
+      "outliers": {
+        "regla": "fuera de [Q1-3·IQR, Q3+3·IQR]",
+        "limites": [
+          -26.0,
+          37.0
+        ],
+        "n_iqr3": 44290,
+        "n_z_robusto>3.5": 143321,
+        "valores_mas_altos": [
+          80995.0,
+          74215.0,
+          19152.0,
+          12960.0,
+          12960.0
+        ],
+        "valores_mas_bajos": [
+          -80995.0,
+          -74215.0,
+          -9600.0,
+          -9600.0,
+          -9600.0
+        ],
+        "tope_repetido": {},
+        "piso_repetido": {},
+        "sesgo": 4.0
+      }
+    },
+    "InvoiceDate": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 47635,
+      "ejemplos": [
+        "2009-12-01 07:45:00",
+        "2009-12-01 07:46:00",
+        "2009-12-01 09:06:00",
+        "2009-12-01 09:08:00",
+        "2009-12-01 09:24:00"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "fecha",
+      "formatos_fecha": {
+        "AAAA-MM-DD": 1067371
+      },
+      "rango_fechas_iso": [
+        "2009-12-01 07:45:00",
+        "2011-12-09 12:50:00"
+      ]
+    },
+    "Price": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 2807,
+      "ejemplos": [
+        "6.95",
+        "6.75",
+        "2.1",
+        "1.25",
+        "1.65"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "numérico",
+      "formato_numero": {
+        "con_moneda": 0,
+        "con_porcentaje": 0,
+        "decimal_coma": 0,
+        "decimal_punto": 1057347,
+        "formato_asumido": "1,234.56 (punto decimal)"
+      },
+      "estadisticas": {
+        "count": 1067371.0,
+        "mean": 4.6494,
+        "std": 123.5531,
+        "min": -53594.36,
+        "25%": 1.25,
+        "50%": 2.1,
+        "75%": 4.15,
+        "max": 38970.0
+      },
+      "negativos": 5,
+      "ceros": 6202,
+      "outliers": {
+        "regla": "fuera de [Q1-3·IQR, Q3+3·IQR]",
+        "limites": [
+          -7.45,
+          12.85
+        ],
+        "n_iqr3": 26174,
+        "n_z_robusto>3.5": 68100,
+        "valores_mas_altos": [
+          38970.0,
+          25111.09,
+          25111.09,
+          18910.69,
+          17836.46
+        ],
+        "valores_mas_bajos": [
+          -53594.36,
+          -44031.79,
+          -38925.87,
+          -11062.06,
+          -11062.06
+        ],
+        "tope_repetido": {},
+        "piso_repetido": {},
+        "sesgo": -69.16
+      }
+    },
+    "Customer ID": {
+      "vacios": 243007,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 22.8,
+      "unicos": 5942,
+      "ejemplos": [
+        "13085",
+        "13078",
+        "15362",
+        "18102",
+        "12682"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "numérico",
+      "formato_numero": {
+        "con_moneda": 0,
+        "con_porcentaje": 0,
+        "decimal_coma": 0,
+        "decimal_punto": 0,
+        "formato_asumido": "1,234.56 (punto decimal)"
+      },
+      "estadisticas": {
+        "count": 824364.0,
+        "mean": 15324.6385,
+        "std": 1697.4645,
+        "min": 12346.0,
+        "25%": 13975.0,
+        "50%": 15255.0,
+        "75%": 16797.0,
+        "max": 18287.0
+      },
+      "negativos": 0,
+      "ceros": 0,
+      "outliers": {
+        "regla": "fuera de [Q1-3·IQR, Q3+3·IQR]",
+        "limites": [
+          5509.0,
+          25263.0
+        ],
+        "n_iqr3": 0,
+        "n_z_robusto>3.5": 0,
+        "valores_mas_altos": [
+          18287.0,
+          18287.0,
+          18287.0,
+          18287.0,
+          18287.0
+        ],
+        "valores_mas_bajos": [
+          12346.0,
+          12346.0,
+          12346.0,
+          12346.0,
+          12346.0
+        ],
+        "tope_repetido": {},
+        "piso_repetido": {},
+        "sesgo": 0.01
+      }
+    },
+    "Country": {
+      "vacios": 0,
+      "nulos_disfrazados": {},
+      "pct_faltante_total": 0.0,
+      "unicos": 43,
+      "ejemplos": [
+        "United Kingdom",
+        "France",
+        "USA",
+        "Belgium",
+        "Australia"
+      ],
+      "con_espacios_extremos": 0,
+      "con_espacios_dobles": 0,
+      "tipo_probable": "texto/categoría",
+      "frecuencias": {
+        "United Kingdom": 981330,
+        "EIRE": 17866,
+        "Germany": 17624,
+        "France": 14330,
+        "Netherlands": 5140,
+        "Spain": 3811,
+        "Switzerland": 3189,
+        "Belgium": 3123,
+        "Portugal": 2620,
+        "Australia": 1913,
+        "Channel Islands": 1664,
+        "Italy": 1534,
+        "Norway": 1455,
+        "Sweden": 1364,
+        "Cyprus": 1176
+      }
+    }
+  },
+  "posibles_identificadores": [
+    {
+      "columna": "Customer ID",
+      "unicos/filas": 0.007,
+      "largos_texto": {
+        "5": 824364
+      }
+    }
+  ],
+  "claves_repetidas_con_contenido_distinto": []
+}
